@@ -1,11 +1,9 @@
 library auth;
-
 import 'package:bond/features/auth/data/api.dart';
 import 'package:bond_cache/bond_cache.dart';
 import 'package:bond_core/bond_core.dart';
 
 import 'data/models/user.dart';
-
 export 'data/models/user.dart';
 export 'data/models/user_meta.dart';
 export 'routes.dart';

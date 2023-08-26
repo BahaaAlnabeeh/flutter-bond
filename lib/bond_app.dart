@@ -8,9 +8,10 @@ import 'features/app/app_bloc.dart';
 import 'routes/app_router.dart';
 
 class BondApp extends StatelessWidget {
-  const BondApp({Key? key, required this.appRouter}) : super(key: key);
+  BondApp({Key? key, required this.appRouter}) : super(key: key);
 
   final AppRouter appRouter;
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +27,8 @@ class BondApp extends StatelessWidget {
       supportedLocales: const [Locale('ar'), Locale('en')],
       debugShowCheckedModeBanner: true,
       routerDelegate: appRouter.delegate(
-          // navigatorObservers: navigatorObservers,
-          ),
+        // navigatorObservers: navigatorObservers,
+      ),
       routeInformationParser: appRouter.defaultRouteParser(),
       theme: appLightThemeData(),
       darkTheme: appDarkThemeData(),

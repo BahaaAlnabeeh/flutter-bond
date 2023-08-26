@@ -26,5 +26,9 @@
   "update_app" : "حان وقت التحديث",
   "update_app_text" : "ليصلك كل جديد يتم إضافته، قم بتحديث تطبيق راسل",
   "update_app_now" : "تحديث الآن",
-  "share_post_image": "مشاركة الصورة"
+  "share_post_image": "مشاركة الصورة",
+  "fingerprint_confirm": "الرجاء تأكيد بصمة الأصبع",
+  "use_fingerprint": "استخدم بصمة إصبعك لتسجيل الدخول إلى التطبيق!",
+  "authenticate": "مصادقة"
+
 }

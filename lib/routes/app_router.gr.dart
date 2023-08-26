@@ -40,6 +40,12 @@ class _$AppRouter extends RootStackRouter {
         child: const RegisterPage(),
       );
     },
+    FingerprintAuthRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const FingerprintAuthPage(),
+      );
+    },
     UpdateAppRoute.name: (routeData) {
       final args = routeData.argsAs<UpdateAppRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -99,48 +105,52 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   List<RouteConfig> get routes => [
+    RouteConfig(
+      MainRoute.name,
+      path: '/',
+      children: [
         RouteConfig(
-          MainRoute.name,
-          path: '/',
-          children: [
-            RouteConfig(
-              HomeRoute.name,
-              path: 'home-page',
-              parent: MainRoute.name,
-            ),
-            RouteConfig(
-              MoreRoute.name,
-              path: 'more-page',
-              parent: MainRoute.name,
-            ),
-          ],
+          HomeRoute.name,
+          path: 'home-page',
+          parent: MainRoute.name,
         ),
         RouteConfig(
-          LoginRoute.name,
-          path: '/login-page',
+          MoreRoute.name,
+          path: 'more-page',
+          parent: MainRoute.name,
         ),
-        RouteConfig(
-          RegisterRoute.name,
-          path: '/register-page',
-        ),
-        RouteConfig(
-          UpdateAppRoute.name,
-          path: 'update_app',
-        ),
-        RouteConfig(
-          SoftUpdateRoute.name,
-          path: '/soft-update-page',
-        ),
-        RouteConfig(
-          PostDetailsRoute.name,
-          path: '/post-details-page',
-        ),
-        RouteConfig(
-          NotificationsRoute.name,
-          path: '/notifications-page',
-          guards: [authGuard],
-        ),
-      ];
+      ],
+    ),
+    RouteConfig(
+      LoginRoute.name,
+      path: '/login-page',
+    ),
+    RouteConfig(
+      RegisterRoute.name,
+      path: '/register-page',
+    ),
+    RouteConfig(
+      FingerprintAuthRoute.name,
+      path: '/fingerprint-auth-page',
+    ),
+    RouteConfig(
+      UpdateAppRoute.name,
+      path: 'update_app',
+    ),
+    RouteConfig(
+      SoftUpdateRoute.name,
+      path: '/soft-update-page',
+    ),
+    RouteConfig(
+      PostDetailsRoute.name,
+      path: '/post-details-page',
+    ),
+    RouteConfig(
+      NotificationsRoute.name,
+      path: '/notifications-page',
+      guards: [authGuard],
+    ),
+  ];
 }
 
 /// generated route for
@@ -148,10 +158,10 @@ class _$AppRouter extends RootStackRouter {
 class MainRoute extends PageRouteInfo<void> {
   const MainRoute({List<PageRouteInfo>? children})
       : super(
-          MainRoute.name,
-          path: '/',
-          initialChildren: children,
-        );
+    MainRoute.name,
+    path: '/',
+    initialChildren: children,
+  );
 
   static const String name = 'MainRoute';
 }
@@ -161,9 +171,9 @@ class MainRoute extends PageRouteInfo<void> {
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute()
       : super(
-          LoginRoute.name,
-          path: '/login-page',
-        );
+    LoginRoute.name,
+    path: '/login-page',
+  );
 
   static const String name = 'LoginRoute';
 }
@@ -173,11 +183,23 @@ class LoginRoute extends PageRouteInfo<void> {
 class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute()
       : super(
-          RegisterRoute.name,
-          path: '/register-page',
-        );
+    RegisterRoute.name,
+    path: '/register-page',
+  );
 
   static const String name = 'RegisterRoute';
+}
+
+/// generated route for
+/// [FingerprintAuthPage]
+class FingerprintAuthRoute extends PageRouteInfo<void> {
+  const FingerprintAuthRoute()
+      : super(
+    FingerprintAuthRoute.name,
+    path: '/fingerprint-auth-page',
+  );
+
+  static const String name = 'FingerprintAuthRoute';
 }
 
 /// generated route for
@@ -187,13 +209,13 @@ class UpdateAppRoute extends PageRouteInfo<UpdateAppRouteArgs> {
     Key? key,
     required String message,
   }) : super(
-          UpdateAppRoute.name,
-          path: 'update_app',
-          args: UpdateAppRouteArgs(
-            key: key,
-            message: message,
-          ),
-        );
+    UpdateAppRoute.name,
+    path: 'update_app',
+    args: UpdateAppRouteArgs(
+      key: key,
+      message: message,
+    ),
+  );
 
   static const String name = 'UpdateAppRoute';
 }
@@ -221,13 +243,13 @@ class SoftUpdateRoute extends PageRouteInfo<SoftUpdateRouteArgs> {
     Key? key,
     required String message,
   }) : super(
-          SoftUpdateRoute.name,
-          path: '/soft-update-page',
-          args: SoftUpdateRouteArgs(
-            key: key,
-            message: message,
-          ),
-        );
+    SoftUpdateRoute.name,
+    path: '/soft-update-page',
+    args: SoftUpdateRouteArgs(
+      key: key,
+      message: message,
+    ),
+  );
 
   static const String name = 'SoftUpdateRoute';
 }
@@ -255,13 +277,13 @@ class PostDetailsRoute extends PageRouteInfo<PostDetailsRouteArgs> {
     required Post post,
     Key? key,
   }) : super(
-          PostDetailsRoute.name,
-          path: '/post-details-page',
-          args: PostDetailsRouteArgs(
-            post: post,
-            key: key,
-          ),
-        );
+    PostDetailsRoute.name,
+    path: '/post-details-page',
+    args: PostDetailsRouteArgs(
+      post: post,
+      key: key,
+    ),
+  );
 
   static const String name = 'PostDetailsRoute';
 }
@@ -289,13 +311,13 @@ class NotificationsRoute extends PageRouteInfo<NotificationsRouteArgs> {
     required NotificationCenterProvider notificationCenterProvider,
     Key? key,
   }) : super(
-          NotificationsRoute.name,
-          path: '/notifications-page',
-          args: NotificationsRouteArgs(
-            notificationCenterProvider: notificationCenterProvider,
-            key: key,
-          ),
-        );
+    NotificationsRoute.name,
+    path: '/notifications-page',
+    args: NotificationsRouteArgs(
+      notificationCenterProvider: notificationCenterProvider,
+      key: key,
+    ),
+  );
 
   static const String name = 'NotificationsRoute';
 }
@@ -321,9 +343,9 @@ class NotificationsRouteArgs {
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute()
       : super(
-          HomeRoute.name,
-          path: 'home-page',
-        );
+    HomeRoute.name,
+    path: 'home-page',
+  );
 
   static const String name = 'HomeRoute';
 }
@@ -333,9 +355,9 @@ class HomeRoute extends PageRouteInfo<void> {
 class MoreRoute extends PageRouteInfo<void> {
   const MoreRoute()
       : super(
-          MoreRoute.name,
-          path: 'more-page',
-        );
+    MoreRoute.name,
+    path: 'more-page',
+  );
 
   static const String name = 'MoreRoute';
 }

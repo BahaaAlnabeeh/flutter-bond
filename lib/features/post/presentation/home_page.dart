@@ -12,10 +12,10 @@ class HomePage extends StatelessWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) => MultiBlocProvider(providers: [
-        BlocProvider<PostCubit>(
-          create: (context) => sl<PostCubit>()..loadAllPosts(),
-        ),
-      ], child: this);
+    BlocProvider<PostCubit>(
+      create: (context) => sl<PostCubit>()..loadAllPosts(),
+    ),
+  ], child: this);
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +51,9 @@ class HomePage extends StatelessWidget with AutoRouteWrapper {
     );
   }
 
-  // void _logoutCubitListener(BuildContext context, LogoutState state) {
-  //   if (state is LogoutSuccess) {
-  //     context.router.replaceAll([const LoginRoute()]);
-  //   }
-  // }
+// void _logoutCubitListener(BuildContext context, LogoutState state) {
+//   if (state is LogoutSuccess) {
+//     context.router.replaceAll([const LoginRoute()]);
+//   }
+// }
 }

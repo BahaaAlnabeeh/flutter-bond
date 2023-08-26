@@ -1,7 +1,7 @@
 import 'dart:developer';
-
 import 'package:bond/features/auth/auth.dart';
 import 'package:bond/features/auth/data/api.dart';
+import 'package:bond/routes/app_router.dart';
 import 'package:bond_core/bond_core.dart';
 import 'package:bond_notifications/bond_notifications.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -17,10 +17,11 @@ class RunAppTasks extends RunTasks {
   Future<void> beforeRun(WidgetsBinding widgetsBinding) async {
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
     await init();
-    await Auth.load();
-    if (!(Auth.check())) {
-      await Auth.loginAnonymous();
-    }
+    // context.router.push(const FingerprintAuthRoute());
+    // await Auth.load();
+    // if (!(Auth.check())) {
+    // await Auth.loginAnonymous();
+    // }
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
     FlutterNativeSplash.remove();
   }
@@ -32,7 +33,7 @@ class RunAppTasks extends RunTasks {
         'high_importance_channel', // id
         'Bond', // title
         description:
-            'This channel is used for important notifications.', // description
+        'This channel is used for important notifications.', // description
         importance: Importance.max,
       );
 
@@ -40,7 +41,7 @@ class RunAppTasks extends RunTasks {
 
       await flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
+          AndroidFlutterLocalNotificationsPlugin>()
           ?.createNotificationChannel(channel);
     }
     sl<PushNotificationsProviders>().listen();
@@ -49,7 +50,7 @@ class RunAppTasks extends RunTasks {
       sl<NotificationCenterProvider>().listen();
 
       final firebaseMessaging =
-          sl<PushNotificationProvider>(instanceName: 'firebase_messaging');
+      sl<PushNotificationProvider>(instanceName: 'firebase_messaging');
       final fcmToken = await firebaseMessaging.token;
       if (fcmToken != null) {
         Map<String, String?> body = {

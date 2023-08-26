@@ -77,6 +77,9 @@ dependencies:
   # localization
   intl: ^0.18.0
 
+  # Recognition
+  local_auth: ^2.1.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
